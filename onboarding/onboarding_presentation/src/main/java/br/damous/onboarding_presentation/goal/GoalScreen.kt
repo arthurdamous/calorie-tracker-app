@@ -14,8 +14,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import br.damous.core.util.UiEvent
 import br.damous.core_ui.LocalSpacing
 import br.damous.core.R
-import br.damous.core.domain.model.ActivityLevel
-import br.damous.core.domain.model.Gender
 import br.damous.core.domain.model.GoalType
 import br.damous.onboarding_presentation.components.ActionButton
 import br.damous.onboarding_presentation.components.SelectableButton
@@ -23,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GoalScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalViewModel = hiltViewModel()
 ) {
 
@@ -31,7 +29,7 @@ fun GoalScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

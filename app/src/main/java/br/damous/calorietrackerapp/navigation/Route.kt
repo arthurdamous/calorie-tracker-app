@@ -1,4 +1,4 @@
-package br.damous.core.navigation
+package br.damous.calorietrackerapp.navigation
 
 object Route {
     const val WELCOME = "welcome"
